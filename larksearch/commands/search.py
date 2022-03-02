@@ -1,12 +1,22 @@
 from datetime import datetime
 from urllib.parse import quote
 from urllib.request import urlopen
+from re import compile
 
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 from discord import Embed
 from discord.ext.commands import Context
 from discord.ext.commands import Command
+
+
+NUMERIC_PATTERN = compile('[0-9][,.0-9]+')
+
+
+def extract_number(string: str) -> float:
+    numeric_string = next(NUMERIC_PATTERN.finditer(string)).group()
+    numeric_string = numeric_string.replace(',', '')
+    return float(numeric_string)
 
 
 async def search(ctx: Context, *, arg: str):
