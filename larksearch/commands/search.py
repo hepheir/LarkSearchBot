@@ -27,7 +27,7 @@ async def search(ctx: Context, *, arg: str):
                   color=0X36393F)
     message = await ctx.send(embed=embed)
     try:
-        embed = await embed_user(username)
+        embed = embed_user(username)
     except:
         embed = embed_user_not_found(username)
     await message.edit(embed=embed)
@@ -42,7 +42,7 @@ def embed_user_not_found(name: str) -> Embed:
     return embed
 
 
-async def embed_user(name: str) -> Embed:
+def embed_user(name: str) -> Embed:
     profile_url = f"https://lostark.game.onstove.com/Profile/Character/{quote(name)}"
     html = urlopen(profile_url)
     soup = BeautifulSoup(html, "html.parser")
@@ -71,7 +71,7 @@ async def embed_user(name: str) -> Embed:
                     ),
                     inline=False)
     embed.set_footer(text="LarkSearch", icon_url="https://bit.ly/3FzSF1Q")
-    await embed
+    return embed
 
 
 def item_level(soup: BeautifulSoup) -> float:
