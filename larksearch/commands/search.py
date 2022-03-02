@@ -1,4 +1,5 @@
 from datetime import datetime
+from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.request import urlopen
 from re import compile
@@ -28,8 +29,10 @@ async def search(ctx: Context, *, arg: str):
     message = await ctx.send(embed=embed)
     try:
         embed = embed_user(username)
-    except:
+    except AttributeError:
         embed = embed_user_not_found(username)
+    except HTTPError:
+        embed = embed_server_is_down(username)
     embed.set_footer(text="LarkSearch", icon_url="https://bit.ly/3FzSF1Q")
     await message.edit(embed=embed)
 
