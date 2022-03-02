@@ -13,6 +13,16 @@ from discord.ext.commands import Command
 from larksearch.bot import bot
 
 
+def add_command():
+    bot.add_command(
+        Command(search,
+                name="검색",
+                aliases=['정보', '캐릭터', '캐릭'],
+                usage="!검색 [닉네임]",
+                help="전투정보실에서 플레이어의 정보를 불러옵니다.")
+    )
+
+
 NUMERIC_PATTERN = compile('[0-9][,.0-9]+')
 
 
@@ -186,10 +196,5 @@ def itemlv_to_gold(item_level: float) -> int:
         return 19500
 
 
-bot.add_command(
-    Command(search,
-            name="검색",
-            aliases=['정보', '캐릭터', '캐릭'],
-            usage="!검색 [닉네임]",
-            help="전투정보실에서 플레이어의 정보를 불러옵니다.")
-)
+# 이 모듈을 import 하는 것 만으로 커멘드가 추가되도록 함.
+add_command()
