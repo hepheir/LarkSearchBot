@@ -67,7 +67,6 @@ def embed_user(name: str) -> Embed:
                         f"[전투정보실]({profile_url})\t"
                         f"[로아와](https://loawa.com/char/{name})\n"
                         "\n"
-                        "⏬를 눌러 자세한 정보를 불러옵니다."
                     ),
                     inline=False)
     embed.set_footer(text="LarkSearch", icon_url="https://bit.ly/3FzSF1Q")
