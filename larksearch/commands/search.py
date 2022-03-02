@@ -74,28 +74,28 @@ async def embed_user(name: str) -> Embed:
     await embed
 
 
-def item_level(soup: BeautifulSoup) -> int:
+def item_level(soup: BeautifulSoup) -> float:
     """아이템 레벨"""
     tag = soup.select_one(
         '#lostark-wrapper > div > main > div > div.profile-ingame > div.profile-info > div.level-info2 > div.level-info2__expedition > span:nth-child(2)')
     return extract_number(tag.get_text())
 
 
-def character_level(soup: BeautifulSoup) -> int:
+def character_level(soup: BeautifulSoup) -> float:
     """캐릭터 레벨"""
     tag = soup.select_one(
         '#lostark-wrapper > div > main > div > div.profile-ingame > div.profile-info > div.level-info > div.level-info__item > span:nth-child(2)')
     return extract_number(tag.get_text())
 
 
-def expedition_level(soup: BeautifulSoup) -> int:
+def expedition_level(soup: BeautifulSoup) -> float:
     """원정대 레벨"""
     tag = soup.select_one(
         '#lostark-wrapper > div > main > div > div.profile-ingame > div.profile-info > div.level-info > div.level-info__expedition > span:nth-child(2)')
     return extract_number(tag.get_text())
 
 
-def domain_level(soup: BeautifulSoup) -> int:
+def domain_level(soup: BeautifulSoup) -> float:
     """영지 레벨"""
     tag = soup.select_one(
         '#lostark-wrapper > div > main > div > div.profile-ingame > div.profile-info > div.game-info > div.game-info__wisdom > span:nth-child(2)')
@@ -139,7 +139,7 @@ def user_server(soup: BeautifulSoup) -> str:
     return tag.get_text()
 
 
-def itemlv_to_gold(item_level: int) -> int:
+def itemlv_to_gold(item_level: float) -> int:
     if item_level < 1325:
         return 0
     elif item_level < 1370:
