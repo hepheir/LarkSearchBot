@@ -78,28 +78,28 @@ def item_level(soup: BeautifulSoup) -> int:
     """아이템 레벨"""
     tag = soup.select_one(
         '#lostark-wrapper > div > main > div > div.profile-ingame > div.profile-info > div.level-info2 > div.level-info2__expedition > span:nth-child(2)')
-    return int(tag.get_text()[3:-3].replace(',', ''))
+    return extract_number(tag.get_text())
 
 
 def character_level(soup: BeautifulSoup) -> int:
     """캐릭터 레벨"""
     tag = soup.select_one(
         '#lostark-wrapper > div > main > div > div.profile-ingame > div.profile-info > div.level-info > div.level-info__item > span:nth-child(2)')
-    return int(tag.get_text())
+    return extract_number(tag.get_text())
 
 
 def expedition_level(soup: BeautifulSoup) -> int:
     """원정대 레벨"""
     tag = soup.select_one(
         '#lostark-wrapper > div > main > div > div.profile-ingame > div.profile-info > div.level-info > div.level-info__expedition > span:nth-child(2)')
-    return int(tag.get_text())
+    return extract_number(tag.get_text())
 
 
 def domain_level(soup: BeautifulSoup) -> int:
     """영지 레벨"""
     tag = soup.select_one(
         '#lostark-wrapper > div > main > div > div.profile-ingame > div.profile-info > div.game-info > div.game-info__wisdom > span:nth-child(2)')
-    return int(tag.get_text())
+    return extract_number(tag.get_text())
 
 
 def _class_image(soup: BeautifulSoup) -> Tag:
