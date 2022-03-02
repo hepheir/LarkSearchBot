@@ -81,6 +81,7 @@ def embed_user(name: str) -> Embed:
                         "\n"
                     ),
                     inline=False)
+    embed.set_image(url=character_image_src(soup))
     return embed
 
 
