@@ -12,6 +12,16 @@ from discord.ext.commands import Command
 from larksearch.bot import bot
 
 
+def add_command():
+    bot.add_command(
+        Command(notice,
+                name="공지사항",
+                aliases=['공지', '업데이트', '패치', '업뎃', '패치노트'],
+                usage="!공지",
+                help="로스트아크 홈페이지의 공지사항을 불러옵니다.")
+    )
+
+
 async def notice(ctx: Context, *arg):
     if ctx.author.bot:
         return
@@ -87,10 +97,5 @@ def get_random_image_src() -> str:
     return random_img_src
 
 
-bot.add_command(
-    Command(notice,
-            name="공지사항",
-            aliases=['공지', '업데이트', '패치', '업뎃', '패치노트'],
-            usage="!공지",
-            help="로스트아크 홈페이지의 공지사항을 불러옵니다.")
-)
+# 이 모듈을 import 하는 것 만으로 커멘드가 추가되도록 함.
+add_command()
