@@ -10,6 +10,8 @@ from discord import Embed
 from discord.ext.commands import Context
 from discord.ext.commands import Command
 
+from larksearch.bot import bot
+
 
 NUMERIC_PATTERN = compile('[0-9][,.0-9]+')
 
@@ -178,8 +180,10 @@ def itemlv_to_gold(item_level: float) -> int:
         return 19500
 
 
-command = Command(search,
-                  name="검색",
-                  aliases=['정보', '캐릭터', '캐릭'],
-                  usage="!검색 [닉네임]",
-                  help="전투정보실에서 플레이어의 정보를 불러옵니다.")
+bot.add_command(
+    Command(search,
+            name="검색",
+            aliases=['정보', '캐릭터', '캐릭'],
+            usage="!검색 [닉네임]",
+            help="전투정보실에서 플레이어의 정보를 불러옵니다.")
+)
