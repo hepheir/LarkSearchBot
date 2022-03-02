@@ -30,6 +30,7 @@ async def search(ctx: Context, *, arg: str):
         embed = embed_user(username)
     except:
         embed = embed_user_not_found(username)
+    embed.set_footer(text="LarkSearch", icon_url="https://bit.ly/3FzSF1Q")
     await message.edit(embed=embed)
 
 
@@ -38,7 +39,6 @@ def embed_user_not_found(name: str) -> Embed:
                   description="플레이어 정보가 존재하지 않습니다.",
                   color=0X36393F,
                   timestamp=datetime.utcnow())
-    embed.set_footer(text="LarkSearch", icon_url="https://bit.ly/3FzSF1Q")
     return embed
 
 
@@ -46,7 +46,6 @@ def embed_user(name: str) -> Embed:
     profile_url = f"https://lostark.game.onstove.com/Profile/Character/{quote(name)}"
     html = urlopen(profile_url)
     soup = BeautifulSoup(html, "html.parser")
-
     embed = Embed(title=name,
                   description=user_server(soup),
                   color=0X36393F,
@@ -69,7 +68,6 @@ def embed_user(name: str) -> Embed:
                         "\n"
                     ),
                     inline=False)
-    embed.set_footer(text="LarkSearch", icon_url="https://bit.ly/3FzSF1Q")
     return embed
 
 
