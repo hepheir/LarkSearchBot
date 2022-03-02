@@ -84,6 +84,11 @@ def embed_user(name: str) -> Embed:
     return embed
 
 
+def character_image_src(soup: BeautifulSoup) -> str:
+    tag = soup.select_one('#profile-equipment > div.profile-equipment__character > img')
+    return tag['src']
+
+
 def item_level(soup: BeautifulSoup) -> float:
     """아이템 레벨"""
     tag = soup.select_one(
