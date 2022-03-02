@@ -42,6 +42,14 @@ def embed_user_not_found(name: str) -> Embed:
     return embed
 
 
+def embed_server_is_down(name: str) -> Embed:
+    embed = Embed(title=name,
+                  description="전투 정보실에 접속할 수 없습니다.",
+                  color=0X36393F,
+                  timestamp=datetime.utcnow())
+    return embed
+
+
 def embed_user(name: str) -> Embed:
     profile_url = f"https://lostark.game.onstove.com/Profile/Character/{quote(name)}"
     html = urlopen(profile_url)
